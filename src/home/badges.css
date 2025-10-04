@@ -1,0 +1,37 @@
+.challenge-card.completed {
+    position: relative;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.completed-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 200, 100, 0.85);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.new-badge {
+    display: inline-block;
+    background: #ff4a4a;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-top: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}

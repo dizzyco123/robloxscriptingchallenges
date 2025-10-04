@@ -23,40 +23,81 @@ function loadChallenges() {
 }
 
 function renderChallenges() {
-    challengesGrid.innerHTML = '';
-    
+    const now = new Date();
+    const completed = JSON.parse(localStorage.getItem('completedChallenges')) || [];
+
+    // Split challenges into categories
+    const newChallenges = [];
+    const oldChallenges = [];
+    const completedChallenges = [];
+
     challenges.forEach(challenge => {
-        const card = createChallengeCard(challenge);
+        const daysOld = (now - new Date(challenge.timeCreated)) / (1000 * 60 * 60 * 24);
+        const isNew = daysOld < 7;
+        const isCompleted = completed.includes(challenge.id);
+
+        if (isCompleted) {
+            completedChallenges.push(challenge);
+        } else if (isNew) {
+            newChallenges.push(challenge);
+        } else {
+            oldChallenges.push(challenge);
+        }
+    });
+
+    // Randomize old challenges
+    oldChallenges.sort(() => Math.random() - 0.5);
+
+    // Combine in final order: New → Old → Completed
+    const orderedChallenges = [...newChallenges, ...oldChallenges, ...completedChallenges];
+
+    // Render
+    challengesGrid.innerHTML = '';
+    orderedChallenges.forEach(challenge => {
+        const card = createChallengeCard(challenge, completed);
         challengesGrid.appendChild(card);
     });
 
+    // Fallback when no challenges match search/filter
     const noResults = document.createElement('div');
     noResults.className = 'no-results';
     noResults.textContent = 'No challenges found';
     challengesGrid.appendChild(noResults);
 }
 
-function createChallengeCard(challenge) {
+
+function createChallengeCard(challenge, completedList = []) {
+    const now = new Date();
+    const isNew = (now - new Date(challenge.timeCreated)) / (1000 * 60 * 60 * 24) < 7;
+    const isCompleted = completedList.includes(challenge.id);
+
     const card = document.createElement('a');
     card.className = `challenge-card ${challenge.difficulty}`;
     card.dataset.difficulty = challenge.difficulty;
     card.dataset.id = challenge.id;
     card.href = `?id=${challenge.id}`;
-    
+
+    if (isCompleted) {
+        card.classList.add('completed');
+    }
+
     card.innerHTML = `
         <div class="challenge-header">
             <div class="challenge-name">${challenge.name}</div>
             <span class="difficulty ${challenge.difficulty}">${challenge.difficulty}</span>
         </div>
         <p class="challenge-description">${challenge.shortDescription}</p>
+        ${isNew ? `<span class="new-badge">New!</span>` : ''}
+        ${isCompleted ? `<div class="completed-overlay">Completed</div>` : ''}
     `;
-    
+
+    // When clicked, open details (not mark completed automatically)
     card.addEventListener('click', (e) => {
         e.preventDefault();
         showChallengeDetail(challenge.id);
         window.history.pushState({}, '', `?id=${challenge.id}`);
     });
-    
+
     return card;
 }
 
@@ -198,3 +239,16 @@ function filterChallenges() {
 }
 
 loadChallenges();
+
+window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (id) {
+        const waitForChallenges = setInterval(() => {
+            if (typeof challenges !== 'undefined' && challenges.length > 0) {
+                clearInterval(waitForChallenges);
+                showChallengeDetail(parseInt(id));
+            }
+        }, 100);
+    }
+});
