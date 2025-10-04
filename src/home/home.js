@@ -7,7 +7,7 @@ const challengeList = document.getElementById('challengeList');
 const challengeDetail = document.getElementById('challengeDetail');
 
 function loadChallenges() {
-    fetch('challenges.json')
+    fetch('src/challenge_list.json')
         .then(response => response.json())
         .then(data => {
             challenges = data.challenges;
