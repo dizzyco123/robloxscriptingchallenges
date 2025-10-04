@@ -7,7 +7,7 @@ const challengeList = document.getElementById('challengeList');
 const challengeDetail = document.getElementById('challengeDetail');
 
 function loadChallenges() {
-    fetch('/challenge_list.json')
+    fetch('https://raw.githubusercontent.com/dizzyco123/robloxscriptingchallenges/refs/heads/main/src/home/challenge_list.json')
         .then(response => response.json())
         .then(data => {
             challenges = data.challenges;
