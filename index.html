@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Scripting Challenges</title>
+    <link href="https://fonts.cdnfonts.com/css/glacial-indifference-2" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="challengeList">
+            <header>
+                <h1>Roblox Scripting Challenges</h1>
+                <p class="author">by dizzyco</p>
+            </header>
+
+            <div class="controls">
+                <div class="search-container">
+                    <input type="text" id="searchBar" placeholder="Search challenges...">
+                </div>
+                <div class="filters">
+                    <button class="filter-btn all active" data-filter="all">All</button>
+                    <button class="filter-btn beginner" data-filter="beginner">Beginner</button>
+                    <button class="filter-btn novice" data-filter="novice">Novice</button>
+                    <button class="filter-btn advanced" data-filter="advanced">Advanced</button>
+                    <button class="filter-btn expert" data-filter="expert">Expert</button>
+                </div>
+            </div>
+
+            <div class="challenges-grid" id="challengesGrid">
+                <div class="loading">Loading challenges...</div>
+            </div>
+        </div>
+
+        <div id="challengeDetail" class="challenge-detail">
+        </div>
+    </div>
+
+    <script>
+        // Sample JSON data
+        const challengesData = {
+            "challenges": [
+                {
+                    "id": 1,
+                    "name": "Coin Collector",
+                    "difficulty": "beginner",
+                    "shortDescription": "Create a script that spawns collectible coins around the map. When a player touches a coin, it should disappear and add points to their leaderboard.",
+                    "fullDescription": "In this challenge, you'll create a coin collection system that teaches you the fundamentals of Roblox scripting including events, player data, and object manipulation.",
+                    "requirements": [
+                        "Create a script that handles coin spawning",
+                        "Implement touch detection for coins",
+                        "Update player leaderboard when coins are collected",
+                        "Add sound effects when coins are collected"
+                    ],
+                    "exampleCode": "local part = script.Parent\n\npart.Touched:Connect(function(hit)\n    local humanoid = hit.Parent:FindFirstChild(\"Humanoid\")\n    if humanoid then\n        -- Add points to player\n        part:Destroy()\n    end\nend)",
+                    "hint": "Use the :FindFirstChild() method to safely check if an object exists before trying to use it. This prevents errors!",
+                    "resources": [
+                        {"name": "Roblox Events Documentation", "url": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptSignal"},
+                        {"name": "Leaderboards Tutorial", "url": "https://create.roblox.com/docs/tutorials/scripting/intermediate-scripting/creating-a-leaderboard"}
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Jump Boost Pad",
+                    "difficulty": "beginner",
+                    "shortDescription": "Build a part that launches players into the air when they step on it. The player should receive a significant upward velocity boost.",
+                    "fullDescription": "Learn how to manipulate player physics by creating a jump boost pad. This challenge introduces you to working with character velocity and forces.",
+                    "requirements": [
+                        "Detect when a player touches the pad",
+                        "Apply upward force to the player",
+                        "Add visual feedback (particle effects)",
+                        "Implement a cooldown system"
+                    ],
+                    "exampleCode": "local pad = script.Parent\nlocal JUMP_POWER = 100\n\npad.Touched:Connect(function(hit)\n    local humanoid = hit.Parent:FindFirstChild(\"Humanoid\")\n    if humanoid then\n        local root = hit.Parent:FindFirstChild(\"HumanoidRootPart\")\n        if root then\n            root.Velocity = Vector3.new(0, JUMP_POWER, 0)\n        end\n    end\nend)",
+                    "hint": "Remember that Velocity is measured in studs per second. Experiment with different values to find the right jump height!",
+                    "resources": [
+                        {"name": "Working with Physics", "url": "https://create.roblox.com/docs/workspace/physics"},
+                        {"name": "Character Manipulation", "url": "https://create.roblox.com/docs/characters"}
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "Teleporter System",
+                    "difficulty": "novice",
+                    "shortDescription": "Implement a teleporter that moves players between two locations. Add a cooldown system to prevent spam and include visual effects.",
+                    "fullDescription": "Build a complete teleportation system with multiple teleport points, cooldown management, and particle effects to enhance the user experience.",
+                    "requirements": [
+                        "Create pairs of teleporter pads",
+                        "Implement smooth teleportation without falling through the map",
+                        "Add a per-player cooldown system",
+                        "Include particle effects and sounds"
+                    ],
+                    "exampleCode": "local teleporter1 = script.Parent\nlocal teleporter2 = workspace.Teleporter2\nlocal cooldowns = {}\nlocal COOLDOWN_TIME = 3\n\nteleporter1.Touched:Connect(function(hit)\n    local player = game.Players:GetPlayerFromCharacter(hit.Parent)\n    if player and not cooldowns[player.UserId] then\n        cooldowns[player.UserId] = true\n        hit.Parent:MoveTo(teleporter2.Position)\n        \n        task.wait(COOLDOWN_TIME)\n        cooldowns[player.UserId] = nil\n    end\nend)",
+                    "hint": "Use :MoveTo() instead of directly setting CFrame to ensure the character doesn't get stuck in parts at the destination.",
+                    "resources": [
+                        {"name": "DataTypes - CFrame", "url": "https://create.roblox.com/docs/reference/engine/datatypes/CFrame"},
+                        {"name": "Managing Cooldowns", "url": "https://create.roblox.com/docs/scripting/debounce"}
+                    ]
+                },
+                {
+                    "id": 4,
+                    "name": "Inventory Manager",
+                    "difficulty": "novice",
+                    "shortDescription": "Create a custom inventory system that allows players to collect, store, and equip different tools. Include data persistence across sessions.",
+                    "fullDescription": "Design a full inventory system with GUI elements, data storage using DataStoreService, and the ability to save and load player inventories.",
+                    "requirements": [
+                        "Create an inventory GUI with slots",
+                        "Implement tool collection and storage",
+                        "Add equip/unequip functionality",
+                        "Save inventory data using DataStoreService"
+                    ],
+                    "exampleCode": "local DataStoreService = game:GetService(\"DataStoreService\")\nlocal inventoryStore = DataStoreService:GetDataStore(\"PlayerInventory\")\n\nlocal function saveInventory(player, inventory)\n    local success, err = pcall(function()\n        inventoryStore:SetAsync(player.UserId, inventory)\n    end)\n    \n    if not success then\n        warn(\"Failed to save inventory: \" .. err)\n    end\nend",
+                    "hint": "Always use pcall() when working with DataStores to handle errors gracefully. DataStores can fail due to network issues!",
+                    "resources": [
+                        {"name": "DataStore Guide", "url": "https://create.roblox.com/docs/cloud-services/data-stores"},
+                        {"name": "Creating GUIs", "url": "https://create.roblox.com/docs/tutorials/building/ui"}
+                    ]
+                }
+            ]
+        };
+    </script>
+</body>
+</html>
