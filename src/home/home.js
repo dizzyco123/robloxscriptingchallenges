@@ -14,7 +14,6 @@ function loadChallenges() {
             renderChallenges();
     })
     .catch(error => console.error('Error loading challenges:', error));
-    renderChallenges();
     
     const urlParams = new URLSearchParams(window.location.search);
     const challengeId = urlParams.get('id');
