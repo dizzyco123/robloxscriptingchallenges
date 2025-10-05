@@ -6,17 +6,75 @@
             "difficulty": "beginner",
             "level": "I",
             "timeCreated": "2025-09-04T22:55:29+00:00",
-            "shortDescription": "Make a script to print 20 numbers, showing either 'Even' or 'Odd' alongside.",
-            "fullDescription": "Print 20 numbers to the Output using 'print()', in ascending order from 1-20 (1,2...20). To the right of each printed number should be a dash, followed by either 'Even' or 'Odd'\n\nYou must <strong>calculate</strong> if a number is even/odd; you may not simply alternate between the two in the loop.",
+            "shortDescription": "Write a script that prints numbers 1-20 to the Output, labeling each as 'Even' or 'Odd'.",
+            "fullDescription": "This challenge should teach you the basics of loops, as well as conditionals via if statements. It serves as a good introduction to programming logic in Luau without the use of anything within the game world.\n\nCreate a script that prints the numbers 1 through 20 to the Output window. Each number should be followed by a dash and either the word 'Even' or 'Odd' depending on whether the number is even or odd. You must use logic to determine if each number is even or odd - you cannot simply alternate between the two labels.",
             "requirements": [
-                "Print numbers 1-20 to the Output",
-                "State if each number is 'Even' or 'Odd'"
+                "Print all numbers from 1 to 20 to the Output",
+                "Label each number as either 'Even' or 'Odd'",
+                "Use mathematical logic to determine even/odd"
             ],
-            "exampleOutput": "> 1 - Odd\n> 2 - Even\n...\n> 20 - Even",
-            "hint": "A number is even if it is divisible by 2 with no remainder. Use the modulus operator for this; %.",
+            "exampleOutput": "> 1 - Odd\n> 2 - Even\n> 3 - Odd\n...\n> 20 - Even",
+            "hint": "A number is even if dividing it by 2 leaves no remainder. Use the modulus operator (%) to check the remainder.",
             "resources": [
-                {"name": "Intro to for loops", "url": "https://create.roblox.com/docs/tutorials/fundamentals/coding-4/intro-to-for-loops"},
-                {"name": "Intro to if statements", "url": "https://create.roblox.com/docs/tutorials/fundamentals/coding-3/intro-to-if-statements"}
+                {"name": "Tutorial: Intro to for loops", "url": "https://create.roblox.com/docs/tutorials/fundamentals/coding-4/intro-to-for-loops"},
+                {"name": "Tutorial: Intro to if statements", "url": "https://create.roblox.com/docs/tutorials/fundamentals/coding-3/intro-to-if-statements"}
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Pressure Plates",
+            "difficulty": "beginner",
+            "level": "I",
+            "timeCreated": "2025-09-04T22:55:29+00:00",
+            "shortDescription": "Make a part that, when touched, prints the name of the player that touched it.",
+            "fullDescription": "This challenge aims to test the basics of Events (known internally to Roblox as RBXScriptSignals). These events fire when a certain thing occurs; for example, part.Touched will fire once the part is touched by anything unanchored. Using :Connect() can then connect this event to a function in order to run code.\n\nCreate a single part in the Workspace. In a script, if this part is touched by a player (and only a player), print that player's name to the Output, as so:\n\n[player name] is touching the part!",
+            "requirements": [
+                "Detect when a part is touched",
+                "Validate that the part was touched by a player, and not anything else",
+                "Get and print the name of the player"
+            ],
+            "exampleOutput": "> dizzyco123 is touching the part!\n> dizzyco123 is touching the part!\n> Dukhibu1 is touching the part!",
+            "resources": [
+                {"name": "Tutorial: Events", "url": "https://create.roblox.com/docs/scripting/events"},
+                {"name": "The Players class", "url": "https://create.roblox.com/docs/reference/engine/classes/Players"}
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Chromatic",
+            "difficulty": "beginner",
+            "level": "I",
+            "timeCreated": "2025-09-04T22:55:29+00:00",
+            "shortDescription": "Make a part that constantly changes to a random color.",
+            "fullDescription": "Properties in Roblox are attributes of an Instance that define how the Instance will look or act. Examples of properties of a Part could be Position, Size, or color. Color is actually represented as two properties: Color3, and BrickColor. BrickColor is a type that consists of 208 pre-made colors, while Color3 represents any color with red, green, and blue values, each from 0 to 1.\n\nCreate a single part in the Workspace. In a script, using a 'while' loop, make the part change color every 0.5 seconds to a random color. The random color should be a Color3, being constructed from RGB values randomized from 0-255.",
+            "requirements": [
+                "Change a part's color every 0.5 seconds",
+                "Randomize the part's color via 3 randomized RGB values"
+            ],
+            "hint": "Use Color3.fromRGB to construct a Color3 value from RGB (three values from 0-255). Utilize math.random() to randomize each value.",
+            "resources": [
+                {"name": "Color3 datatype", "url": "https://create.roblox.com/docs/reference/engine/datatypes/Color3"},
+                {"name": "Tutorial: repeat code with while loops", "url": "https://create.roblox.com/docs/tutorials/fundamentals/coding-4/repeat-code-with-while-loops"},
+                {"name": "The math library", "url": "https://create.roblox.com/docs/reference/engine/libraries/math"}
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Leaderboard Clicker",
+            "difficulty": "beginner",
+            "level": "III",
+            "timeCreated": "2025-09-04T22:55:29+00:00",
+            "shortDescription": "Use the Roblox leaderboard to show value 'Clicks' for each player. Make a green part and a red part, to increment and decrement the Clicks respectfully when clicked.",
+            "fullDescription": "This challenge should test your knowledge on Roblox's Leaderstats system, which can show values for each player on the leaderboard. This challenge also utilizes ClickDetectors to detect when a player clicks a part.\n\nCreate a green part and red part in Workspace. Using <strong>one</strong> script, increment a player's Clicks value by 1 when they click on the green part, and decrement their Clicks by 1 when clicking on the red part.",
+            "requirements": [
+                "Set up leaderstat values for each player that joins the game",
+                "Detect when one of the two parts are clicked",
+                "Increment/decrement the leaderstat value"
+            ],
+            "hint": "Use the Players.PlayerAdded event, which fires when a new player joins your game. Then, create the leaderstats folder as well as necessary IntValues, for each player.",
+            "resources": [
+                {"name": "Tutorial: In-experience leaderboards (leaderstats)", "url": "https://create.roblox.com/docs/players/leaderboards"},
+                {"name": "ClickDetector class", "url": "https://create.roblox.com/docs/reference/engine/classes/ClickDetector"}
             ]
         }
     ]

@@ -109,13 +109,14 @@ function showChallengeDetail(challengeId) {
         <div class="detail-header ${challenge.difficulty}">
             <h1 class="detail-title">${challenge.name}</h1>
             <span class="detail-difficulty ${challenge.difficulty}">${challenge.difficulty} ${challenge.level}</span>
-            <button class="detail-complete-btn" id="markCompleteBtn">Mark as Complete</button>
         </div>
+
+        <button class="detail-complete-btn" id="markCompleteBtn">Mark as Complete<span class="particletext confetti"></span></button>
         
         <div class="detail-content">
             <div class="section">
                 <h2 class="section-title">Description</h2>
-                <p class="section-content">${challenge.shortDescription}<br><br>${challenge.fullDescription}</p>
+                <p class="section-content">${challenge.fullDescription}</p>
             </div>
     `;
     
