@@ -80,7 +80,7 @@ function createChallengeCard(challenge, completedList = []) {
     card.innerHTML = `
         <div class="challenge-header">
             <div class="challenge-name">${challenge.name}</div>
-            <span class="difficulty ${challenge.difficulty}">${challenge.difficulty}</span>
+            <span class="difficulty ${challenge.difficulty}">${challenge.difficulty} ${challenge.level}</span>
             ${isNew ? `<span class="new-badge">New!</span>` : ''}
         </div>
         <p class="challenge-description">${challenge.shortDescription}</p>
@@ -108,14 +108,14 @@ function showChallengeDetail(challengeId) {
         
         <div class="detail-header ${challenge.difficulty}">
             <h1 class="detail-title">${challenge.name}</h1>
-            <span class="detail-difficulty ${challenge.difficulty}">${challenge.difficulty}</span>
+            <span class="detail-difficulty ${challenge.difficulty}">${challenge.difficulty} ${challenge.level}</span>
             <button class="detail-complete-btn" id="markCompleteBtn">Mark as Complete</button>
         </div>
         
         <div class="detail-content">
             <div class="section">
                 <h2 class="section-title">Description</h2>
-                <p class="section-content">${challenge.fullDescription}</p>
+                <p class="section-content">${challenge.shortDescription}<br><br>${challenge.fullDescription}</p>
             </div>
     `;
     
@@ -130,11 +130,11 @@ function showChallengeDetail(challengeId) {
         `;
     }
     
-    if (challenge.exampleCode) {
+    if (challenge.exampleOutput) {
         detailHTML += `
             <div class="section">
-                <h2 class="section-title">Example Code</h2>
-                <div class="code-block">${challenge.exampleCode}</div>
+                <h2 class="section-title">Example Output</h2>
+                <div class="code-block">${challenge.exampleOutput}</div>
             </div>
         `;
     }
