@@ -7,7 +7,7 @@
             "level": "I",
             "timeCreated": "2025-09-04T22:55:29+00:00",
             "shortDescription": "Write a script that prints numbers 1-20 to the Output, labeling each as 'Even' or 'Odd'.",
-            "fullDescription": "This challenge should teach you the basics of loops, as well as conditionals via if statements. It serves as a good introduction to programming logic in Luau without the use of anything within the game world.\n\nCreate a script that prints the numbers 1 through 20 to the Output window. Each number should be followed by a dash and either the word 'Even' or 'Odd' depending on whether the number is even or odd. You must use logic to determine if each number is even or odd - you cannot simply alternate between the two labels.",
+            "fullDescription": "This challenge should teach you the basics of loops, as well as conditionals via if statements. It serves as a good introduction to programming logic in Luau without the use of anything within the game world.<br><br>Create a script that prints the numbers 1 through 20 to the Output window. Each number should be followed by a dash and either the word 'Even' or 'Odd' depending on whether the number is even or odd. You must use logic to determine if each number is even or odd - you cannot simply alternate between the two labels.",
             "requirements": [
                 "Print all numbers from 1 to 20 to the Output",
                 "Label each number as either 'Even' or 'Odd'",
@@ -27,7 +27,7 @@
             "level": "I",
             "timeCreated": "2025-09-04T22:55:29+00:00",
             "shortDescription": "Make a part that, when touched, prints the name of the player that touched it.",
-            "fullDescription": "This challenge aims to test the basics of Events (known internally to Roblox as RBXScriptSignals). These events fire when a certain thing occurs; for example, part.Touched will fire once the part is touched by anything unanchored. Using :Connect() can then connect this event to a function in order to run code.\n\nCreate a single part in the Workspace. In a script, if this part is touched by a player (and only a player), print that player's name to the Output, as so:\n\n[player name] is touching the part!",
+            "fullDescription": "This challenge aims to test the basics of Events (known internally to Roblox as RBXScriptSignals). These events fire when a certain thing occurs; for example, part.Touched will fire once the part is touched by anything unanchored. Using :Connect() can then connect this event to a function in order to run code.<br><br>Create a single part in the Workspace. In a script, if this part is touched by a player (and only a player), print that player's name to the Output, as so:<br><br>[player name] is touching the part!",
             "requirements": [
                 "Detect when a part is touched",
                 "Validate that the part was touched by a player, and not anything else",
@@ -46,7 +46,7 @@
             "level": "I",
             "timeCreated": "2025-09-04T22:55:29+00:00",
             "shortDescription": "Make a part that constantly changes to a random color.",
-            "fullDescription": "Properties in Roblox are attributes of an Instance that define how the Instance will look or act. Examples of properties of a Part could be Position, Size, or color. Color is actually represented as two properties: Color3, and BrickColor. BrickColor is a type that consists of 208 pre-made colors, while Color3 represents any color with red, green, and blue values, each from 0 to 1.\n\nCreate a single part in the Workspace. In a script, using a 'while' loop, make the part change color every 0.5 seconds to a random color. The random color should be a Color3, being constructed from RGB values randomized from 0-255.",
+            "fullDescription": "Properties in Roblox are attributes of an Instance that define how the Instance will look or act. Examples of properties of a Part could be Position, Size, or color. Color is actually represented as two properties: Color3, and BrickColor. BrickColor is a type that consists of 208 pre-made colors, while Color3 represents any color with red, green, and blue values, each from 0 to 1.<br><br>Create a single part in the Workspace. In a script, using a 'while' loop, make the part change color every 0.5 seconds to a random color. The random color should be a Color3, being constructed from RGB values randomized from 0-255.",
             "requirements": [
                 "Change a part's color every 0.5 seconds",
                 "Randomize the part's color via 3 randomized RGB values"
@@ -65,7 +65,7 @@
             "level": "III",
             "timeCreated": "2025-09-04T22:55:29+00:00",
             "shortDescription": "Use the Roblox leaderboard to show value 'Clicks' for each player. Make a green part and a red part, to increment and decrement the Clicks respectfully when clicked.",
-            "fullDescription": "This challenge should test your knowledge on Roblox's Leaderstats system, which can show values for each player on the leaderboard. This challenge also utilizes ClickDetectors to detect when a player clicks a part.\n\nCreate a green part and red part in Workspace. Using <strong>one</strong> script, increment a player's Clicks value by 1 when they click on the green part, and decrement their Clicks by 1 when clicking on the red part.",
+            "fullDescription": "This challenge should test your knowledge on Roblox's Leaderstats system, which can show values for each player on the leaderboard. This challenge also utilizes ClickDetectors to detect when a player clicks a part.<br><br>Create a green part and red part in Workspace. Using <strong>one</strong> script, increment a player's Clicks value by 1 when they click on the green part, and decrement their Clicks by 1 when clicking on the red part. This can all be done on the server.",
             "requirements": [
                 "Set up leaderstat values for each player that joins the game",
                 "Detect when one of the two parts are clicked",
@@ -75,6 +75,27 @@
             "resources": [
                 {"name": "Tutorial: In-experience leaderboards (leaderstats)", "url": "https://create.roblox.com/docs/players/leaderboards"},
                 {"name": "ClickDetector class", "url": "https://create.roblox.com/docs/reference/engine/classes/ClickDetector"}
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Spleef",
+            "difficulty": "novice",
+            "level": "I",
+            "timeCreated": "2025-09-04T22:55:29+00:00",
+            "shortDescription": "Create a grid of tiles that disappear gradually on touch, then reappear after a short duration.",
+            "fullDescription": "Welcome to the Novice difficulty. This challenge will combine a few concepts from certain Beginner challenges into one.<br><br>Only one script should be used for the purposes of this challenge. The script should spawn a 5x5 square grid of parts (25 parts in total). Each part represents a thin tile, with size of (4, 1, 4). When a player touches a tile, it should disappear over the course of 1 second using a tween. After 5 seconds, the tile should reappear instantaneously. Tiles that have disappeared should not be collidable, but only after they are completely transparent.<br><img src='../media/spleef_demonstration.gif'>",
+            "requirements": [
+                "Use nested for loops to create a 5x5 grid of parts",
+                "Detect when a player touches a part",
+                "Fade the tile out to transparent, making it non-collidable afterwards",
+                "Make the tile reappear after 5 seconds"
+            ],
+            "hint": "Make use of how a for loop's variable will increment in order to position each tile. You can multiply this incrementing number by 4 (the width of each tile).",
+            "resources": [
+                {"name": "The TweenService class", "url": "https://create.roblox.com/docs/reference/engine/classes/TweenService"},
+                {"name": "Tutorial: Intro to for loops", "url": "https://create.roblox.com/docs/tutorials/fundamentals/coding-4/intro-to-for-loops"},
+                {"name": "Tutorial: Events", "url": "https://create.roblox.com/docs/scripting/events"}
             ]
         }
     ]
