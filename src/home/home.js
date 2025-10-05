@@ -26,7 +26,6 @@ function renderChallenges() {
     const now = new Date();
     const completed = JSON.parse(localStorage.getItem('completedChallenges')) || [];
 
-    // Split challenges into categories
     const newChallenges = [];
     const oldChallenges = [];
     const completedChallenges = [];
@@ -45,20 +44,17 @@ function renderChallenges() {
         }
     });
 
-    // Randomize old challenges
     oldChallenges.sort(() => Math.random() - 0.5);
 
-    // Combine in final order: New → Old → Completed
     const orderedChallenges = [...newChallenges, ...oldChallenges, ...completedChallenges];
 
-    // Render
     challengesGrid.innerHTML = '';
     orderedChallenges.forEach(challenge => {
         const card = createChallengeCard(challenge, completed);
         challengesGrid.appendChild(card);
     });
 
-    // Fallback when no challenges match search/filter
+    // no results
     const noResults = document.createElement('div');
     noResults.className = 'no-results';
     noResults.textContent = 'No challenges found';
@@ -85,13 +81,12 @@ function createChallengeCard(challenge, completedList = []) {
         <div class="challenge-header">
             <div class="challenge-name">${challenge.name}</div>
             <span class="difficulty ${challenge.difficulty}">${challenge.difficulty}</span>
+            ${isNew ? `<span class="new-badge">New!</span>` : ''}
         </div>
         <p class="challenge-description">${challenge.shortDescription}</p>
-        ${isNew ? `<span class="new-badge">New!</span>` : ''}
         ${isCompleted ? `<div class="completed-overlay">Completed</div>` : ''}
     `;
 
-    // When clicked, open details (not mark completed automatically)
     card.addEventListener('click', (e) => {
         e.preventDefault();
         showChallengeDetail(challenge.id);
@@ -114,6 +109,7 @@ function showChallengeDetail(challengeId) {
         <div class="detail-header ${challenge.difficulty}">
             <h1 class="detail-title">${challenge.name}</h1>
             <span class="detail-difficulty ${challenge.difficulty}">${challenge.difficulty}</span>
+            <button class="detail-complete-btn" id="markCompleteBtn">Mark as Complete</button>
         </div>
         
         <div class="detail-content">
@@ -147,7 +143,7 @@ function showChallengeDetail(challengeId) {
         detailHTML += `
             <div class="section">
                 <div class="hint-box">
-                    <div class="hint-title">💡 Hint</div>
+                    <div class="hint-title">﹗ Hint</div>
                     <p class="section-content">${challenge.hint}</p>
                 </div>
             </div>
@@ -178,6 +174,39 @@ function showChallengeDetail(challengeId) {
     });
     
     window.scrollTo(0, 0);
+
+    const completeBtn = document.getElementById('markCompleteBtn');
+    if (completeBtn) {
+        const completed = JSON.parse(localStorage.getItem('completedChallenges')) || [];
+        if (completed.includes(challenge.id)) {
+            completeBtn.textContent = '✓ Completed';
+        }
+
+        completeBtn.addEventListener('click', () => {
+            if (completeBtn.textContent == 'Mark as Complete') {
+                console.log("com");
+                markChallengeCompletion(challenge.id);
+                completeBtn.textContent = '✓ Completed';
+            } else {
+                markChallengeCompletion(challenge.id);
+                console.log("comp");
+                completeBtn.textContent = 'Mark as Complete';
+            }
+            renderChallenges();
+        });
+    }
+}
+
+function markChallengeCompletion(id) {
+    let completed = JSON.parse(localStorage.getItem('completedChallenges')) || [];
+
+    if (!completed.includes(id)) {
+        completed.push(id);
+    } else {
+        completed = completed.filter(item => item !== id);
+    }
+
+    localStorage.setItem('completedChallenges', JSON.stringify(completed));
 }
 
 function showChallengeList() {
@@ -252,3 +281,24 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
 });
+
+let duration = 15 * 1000;
+let animationEnd = Date.now() + duration;
+let defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+let interval = setInterval(function() {
+  let timeLeft = animationEnd - Date.now();
+
+  if (timeLeft <= 0) {
+    return clearInterval(interval);
+  }
+
+  let particleCount = 50 * (timeLeft / duration);
+  // since particles fall down, start a bit higher than random
+  confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+  confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+}, 250);
