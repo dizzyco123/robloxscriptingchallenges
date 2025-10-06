@@ -160,7 +160,7 @@
         },
         {
             "id": 9,
-            "name": "Procedural Animation IK System",
+            "name": "Spider Kinematics",
             "difficulty": "advanced",
             "level": "III",
             "shortDescription": "Create a procedural leg animation system using inverse kinematics for a spider-like creature.",
