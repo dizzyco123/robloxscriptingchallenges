@@ -157,6 +157,30 @@
             "resources": [
                 {"name": "Tutorial: Tables", "url": "https://create.roblox.com/docs/luau/tables"}
             ]
+        },
+        {
+            "id": 9,
+            "name": "Procedural Animation IK System",
+            "difficulty": "advanced",
+            "level": "III",
+            "shortDescription": "Create a procedural leg animation system using inverse kinematics for a spider-like creature.",
+            "fullDescription": "Forget Roblox's animation system. Use procedural animation to create a six-legged creature (spider) whose legs dynamically adapt to terrain using inverse kinematics (IK). Each leg should raycast to find ground, calculate the angle needed to reach that point, then smoothly animate there. Legs should lift and step forward when they're too far behind the body's movement. This requires understanding trigonometry and CFrame manipulation.<br><br>Build a spider rig with 6 legs, each having 3 segments (hip, knee, foot). Use two-bone IK to calculate joint angles so feet always touch the ground. Implement a gait system where legs move in alternating tripods (3 legs down, 3 legs stepping). Each leg should raycast downward to find terrain height and smoothly tween to that position.",
+            "requirements": [
+                "Create a spider model with 6 legs, each with 3 connected parts (hip, knee, foot)",
+                "Implement two-bone inverse kinematics to calculate joint angles",
+                "Each leg should raycast downward to detect ground height",
+                "Calculate target position for foot based on body movement and ground detection",
+                "Implement a stepping system: when a foot is too far from target, lift and step",
+                "Use alternating tripod gait (legs 1,3,5 move while 2,4,6 are planted, then switch)",
+                "Smoothly interpolate leg positions and rotations using CFrame:Lerp() or tweens",
+                "Handle slopes, stairs, and uneven terrain naturally",
+                "Make the spider body tilt slightly based on leg heights for realism"
+            ],
+            "hint": "Use the law of cosines to solve for joint angles. For the stepping gait, track whether legs are in the 'grounded' or 'stepping' phase.",
+            "resources": [
+                {"name": "Procedural Animation", "url": "https://www.youtube.com/watch?v=e6Gjhr1IP6w"},
+                {"name": "CFrame", "url": "https://create.roblox.com/docs/reference/engine/datatypes/CFrame"}
+            ]
         }
     ]
 }
