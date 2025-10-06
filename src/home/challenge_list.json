@@ -36,7 +36,7 @@
             "exampleOutput": "> dizzyco123 is touching the part!\n> dizzyco123 is touching the part!\n> Dukhibu1 is touching the part!",
             "resources": [
                 {"name": "Tutorial: Events", "url": "https://create.roblox.com/docs/scripting/events"},
-                {"name": "The Players class", "url": "https://create.roblox.com/docs/reference/engine/classes/Players"}
+                {"name": "Players (service)", "url": "https://create.roblox.com/docs/reference/engine/classes/Players"}
             ]
         },
         {
@@ -55,7 +55,7 @@
             "resources": [
                 {"name": "Color3 datatype", "url": "https://create.roblox.com/docs/reference/engine/datatypes/Color3"},
                 {"name": "Tutorial: repeat code with while loops", "url": "https://create.roblox.com/docs/tutorials/fundamentals/coding-4/repeat-code-with-while-loops"},
-                {"name": "The math library", "url": "https://create.roblox.com/docs/reference/engine/libraries/math"}
+                {"name": "math library", "url": "https://create.roblox.com/docs/reference/engine/libraries/math"}
             ]
         },
         {
@@ -74,7 +74,7 @@
             "hint": "Use the Players.PlayerAdded event, which fires when a new player joins your game. Then, create the leaderstats folder as well as necessary IntValues, for each player.",
             "resources": [
                 {"name": "Tutorial: In-experience leaderboards (leaderstats)", "url": "https://create.roblox.com/docs/players/leaderboards"},
-                {"name": "ClickDetector class", "url": "https://create.roblox.com/docs/reference/engine/classes/ClickDetector"}
+                {"name": "ClickDetector", "url": "https://create.roblox.com/docs/reference/engine/classes/ClickDetector"}
             ]
         },
         {
@@ -84,7 +84,7 @@
             "level": "I",
             "timeCreated": "2025-09-04T22:55:29+00:00",
             "shortDescription": "Create a grid of tiles that disappear gradually on touch, then reappear after a short duration.",
-            "fullDescription": "Welcome to the Novice difficulty. This challenge will combine a few concepts from certain Beginner challenges into one.<br><br>Only one script should be used for the purposes of this challenge. The script should spawn a 5x5 square grid of parts (25 parts in total). Each part represents a thin tile, with size of (4, 1, 4). When a player touches a tile, it should disappear over the course of 1 second using a tween. After 5 seconds, the tile should reappear instantaneously. Tiles that have disappeared should not be collidable, but only after they are completely transparent.<br><img src='../media/spleef_demonstration.gif'>",
+            "fullDescription": "Only one script should be used for the purposes of this challenge. The script should programmatically spawn a 5x5 square grid of parts (25 parts in total). Each part represents a thin tile, with size of (4, 1, 4). When a player touches a tile, it should disappear over the course of 1 second using a tween. After 5 seconds, the tile should reappear instantaneously. Tiles that have disappeared should not be collidable, but only after they are completely transparent.<br><img src='/src/media/spleef_demonstration.gif'>",
             "requirements": [
                 "Use nested for loops to create a 5x5 grid of parts",
                 "Detect when a player touches a part",
@@ -93,9 +93,69 @@
             ],
             "hint": "Make use of how a for loop's variable will increment in order to position each tile. You can multiply this incrementing number by 4 (the width of each tile).",
             "resources": [
-                {"name": "The TweenService class", "url": "https://create.roblox.com/docs/reference/engine/classes/TweenService"},
+                {"name": "TweenService", "url": "https://create.roblox.com/docs/reference/engine/classes/TweenService"},
                 {"name": "Tutorial: Intro to for loops", "url": "https://create.roblox.com/docs/tutorials/fundamentals/coding-4/intro-to-for-loops"},
                 {"name": "Tutorial: Events", "url": "https://create.roblox.com/docs/scripting/events"}
+            ]
+        },
+        {
+            "id": 6,
+            "name": "My Pet Robot",
+            "difficulty": "novice",
+            "level": "II",
+            "timeCreated": "2025-09-04T22:55:29+00:00",
+            "shortDescription": "Make a robot NPC that pathfinds to the position of any player who chats 'Follow me!'",
+            "fullDescription": "You've recently gotten hired at a startup humanoid robotics company, with an investor demonstration in just a week. They give you the task of programming their robot to follow simple locomotion commands. If a nearby person orders for the robot to follow them, the robot should oblige and walk to their ready. Since the investors wouldn't be too impressed if the robot kept tripping over things, it must navigate the world while taking obstacles and walls into account.<br><br>This challenge will utilize PathfindingService, which is Roblox's built-in pathfinding that makes it simple for an agent to find the shortest path to a point. Find a humanoid rig on the toolbox that represents a robot. When any player chats the term 'Follow me!' (accepting any case), the robot should pathfind to the chatting player and move to their location continually, stopping once it reaches within 10 studs of the player. If a separate player chats the term, the robot should interrupt its own pathfinding and target the newer player. If no path is found to the chatting player, the robot can stay in place and should chat 'No path.'<br><br>A fun way to test the pathfinding: insert a maze map from the Toolbox, or make your own. Then allow the robot to find its way through the maze to reach you.",
+            "requirements": [
+                "Check if a player chats the term 'Follow me!'",
+                "Make the NPC continually walk to the chatting player",
+                "Make the NPC itself chat 'No path.' if the pathfinding resulted in a status of NoPath"
+            ],
+            "hint": "To find if the robot is within 10 studs of the player, utilize (point1 - point2).Magnitude. This subtracts the vectors of each point and finds the vector magnitude of the new vector, effectively returning the distance in studs.",
+            "resources": [
+                {"name": "PathfindingService", "url": "https://create.roblox.com/docs/reference/engine/classes/PathfindingService"},
+                {"name": "Humanoid:MoveTo()", "url": "https://create.roblox.com/docs/reference/engine/classes/Humanoid#MoveTo"},
+                {"name": "The Player.Chatted event", "url": "https://create.roblox.com/docs/reference/engine/classes/Player#Chatted"}
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Passcode Protected",
+            "difficulty": "novice",
+            "level": "III",
+            "timeCreated": "2025-09-04T22:55:29+00:00",
+            "shortDescription": "Create a metal door with a keypad, only opening the door if the correct passcode is inputted.",
+            "fullDescription": "You are a secret supervillain looking to hide your lair from anyone looking to foil your evil plans. At the front of your lair, you'd like a thick metal door installed. To open it, you'd also like a keypad installed on the same wall, only allowing the door to open if the super-confidential code '1234' is inputted.<br><br>In Workspace, create the scene described. The keypad should be made out of an array of small, square parts, arranged in the standard keypad formation. A green button to the right of the '0' key should serve as the 'Enter' button. ClickDetectors should be used for each button for detecting clicks.<br><br>A player's current code should be specific to them and must not affect any other players. Any further inputs past 4 digits should be ignored. Once the submit button is pressed, check if the code matches '1234'; if so, open the door by sliding it up with a tween (of course, you can't be letting anyone in behind you, so ensure that the door closes within 5 seconds). If the incorrect code is inputted, reset that player's code and allow them to try again.<br><img src='src/media/passcode_protected_door.png'>",
+            "requirements": [
+                "Create a door with a keypad",
+                "When a number key is clicked, add that digit to the player's current attempt",
+                "Once the green 'Enter' button is clicked, validate that the entered code is '1234'",
+                "Use a tween to open the door if the code is correct; else, reset the code",
+                "Ensure that the door closes after 5 seconds"
+            ],
+            "hint": "Use a table (dictionary) with player.UserId as the key to store each player's code separately. The string concatenation operator '..' adds digits together. Use #string to get the length of a string.",
+            "resources": [
+                {"name": "ClickDetector", "url": "https://create.roblox.com/docs/reference/engine/classes/ClickDetector"},
+                {"name": "Tutorial: Tables", "url": "https://create.roblox.com/docs/luau/tables"},
+                {"name": "TweenService", "url": "https://create.roblox.com/docs/reference/engine/classes/TweenService"}
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Resource Distribution",
+            "difficulty": "advanced",
+            "level": "I",
+            "timeCreated": "2025-09-04T22:55:29+00:00",
+            "shortDescription": "Make a grid of parts, distributing 15 trees (green) and 8 mines (yellow) randomly, while placing no mines adjacent to any trees.",
+            "fullDescription": "You're building a resource management game where players establish camps to harvest lumber and ore. The landscape needs to be procedurally generated with realistic resource distribution. Forests (represented by green parts) naturally grow in clusters, so trees can be placed next to each other. However, ore mines (orange parts) require must have a full 3x3 clearing around them, so they should not be adjacent to any other resources (including diagonals). Your algorithm must ensure resources are distributed randomly while respecting these environmental constraints.<br><br>Create a 10x10 grid of 1x1x1 parts (100 parts total), then spawn 15 trees and 8 mines following these placement rules: trees can be adjacent to other trees, but never to mines. Mines must have a completely clear 3x3 area around them (including diagonals). 'Spawning' a resource means replacing the color of the part at the resource's position to the resource's color. This challenge should test your ability to work with 2D arrays and validate positions.<br><img src='/src/media/resource_distribution.png'>",
+            "requirements": [
+                "Create a 10x10 grid of small parts via script",
+                "Spawn 15 forests (green) and 8 ore mines (orange) by replacing the colors of certain parts",
+                "Resources should be randomly distributed, but with the stated placement rules"
+            ],
+            "hint": "Ordering matters! Since mines take up more space, spawn them first before spawning any trees.",
+            "resources": [
+                {"name": "Tutorial: Tables", "url": "https://create.roblox.com/docs/luau/tables"}
             ]
         }
     ]
