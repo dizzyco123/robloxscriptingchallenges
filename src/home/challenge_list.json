@@ -84,7 +84,7 @@
             "level": "I",
             "timeCreated": "2025-09-04T22:55:29+00:00",
             "shortDescription": "Create a grid of tiles that disappear gradually on touch, then reappear after a short duration.",
-            "fullDescription": "Only one script should be used for the purposes of this challenge. The script should programmatically spawn a 5x5 square grid of parts (25 parts in total). Each part represents a thin tile, with size of (4, 1, 4). When a player touches a tile, it should disappear over the course of 1 second using a tween. After 5 seconds, the tile should reappear instantaneously. Tiles that have disappeared should become non-collidable, but only after they are completely transparent.<br><img src='src/media/spleef_demonstration.gif'>",
+            "fullDescription": "Only one script should be used for the purposes of this challenge. The script should programmatically spawn a 5x5 square grid of parts (25 parts in total). Each part represents a thin tile, with size of (4, 1, 4). When a player touches a tile, it should disappear over the course of 1 second using a tween. After 5 seconds, the tile should reappear instantaneously. Tiles that have disappeared should become non-collidable, but only after they are completely transparent.<br><br><img src='src/media/spleef_demonstration.gif'>",
             "requirements": [
                 "Use nested for loops to create a 5x5 grid of parts",
                 "Detect when a player touches a part",
