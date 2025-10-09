@@ -161,8 +161,8 @@
         {
             "id": 9,
             "name": "Spider Kinematics",
-            "difficulty": "advanced",
-            "level": "III",
+            "difficulty": "expert",
+            "level": "I",
             "timeCreated": "2025-10-04T22:55:29+00:00",
             "shortDescription": "Create a procedural leg animation system using inverse kinematics for a spider-like creature.",
             "fullDescription": "Forget Roblox's animation system. Use procedural animation to create a six-legged creature (spider) whose legs dynamically adapt to terrain using inverse kinematics (IK). Each leg should raycast to find ground, calculate the angle needed to reach that point, then smoothly animate there. Legs should lift and step forward when they're too far behind the body's movement. This requires understanding trigonometry and CFrame manipulation.<br><br>Build a spider rig with 6 legs, each having 3 segments (hip, knee, foot). Use two-bone IK to calculate joint angles so feet always touch the ground. Implement a gait system where legs move in alternating tripods (3 legs down, 3 legs stepping). Each leg should raycast downward to find terrain height and smoothly tween to that position.",
