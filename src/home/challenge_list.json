@@ -182,6 +182,27 @@
                 {"name": "Procedural Animation", "url": "https://www.youtube.com/watch?v=e6Gjhr1IP6w"},
                 {"name": "CFrame", "url": "https://create.roblox.com/docs/reference/engine/datatypes/CFrame"}
             ]
+        },
+        {
+            "id": 10,
+            "name": "Color Memory",
+            "difficulty": "novice",
+            "level": "II",
+            "timeCreated": "2025-10-11T22:55:29+00:00",
+            "shortDescription": "Recreate the classic 4-color memory game (also known as Simon).",
+            "fullDescription": "You've likely played with one of these toys at some point:<br><br><img src='media/simon.jpg'><br><br>The game itself is very simple: one of the 4 colored buttons will light up with a sound, which you then reciprocate by pressing the samely-colored button. Each time your input is correct, the sequence will grow by one, displaying all previous colors in order, plus a new one.<br><br>Your job is to recreate this game within Roblox. Create 4 square parts in Workspace with these 4 colors: yellow, red, blue, green. The game will be played entirely on client (via a LocalScript), and after 5 seconds of the player joining, the game will start. When a button is clicked (via ClickDetector) or shown by the sequence, it's material should become Neon to make it glow. Input from the player should only affect their attempt after the entire sequence has been displayed.<br><br>When the player messes up a color in the sequence, the game should immediately stop, and all buttons should become white. If the attempted sequence is correct, continue with the game and make the sequence one color longer. If you'd like, add sounds to the game for when a color is displayed or clicked.<br><br><img src='media/color_memory.gif'><br><br>",
+            "requirements": [
+                "Make four parts with the four different colors of the Simon game",
+                "Show a sequence of colors by lighting up the corresponding buttons",
+                "Detect clicks on each button",
+                "If the sequence inputted is correct, play the sequence again with one new color",
+                "If the sequence is incorrect, stop the game and turn all parts white"
+            ],
+            "hint": "You can use a variable table to hold the player's current attempted sequence. Reset the table when the pattern finishes displaying, and then wait until the table reaches the full length of the sequence, or until a color is inputted incorrectly.",
+            "resources": [
+                {"name": "Tutorial: Tables", "url": "https://create.roblox.com/docs/luau/tables"},
+                {"name": "ClickDetector", "url": "https://create.roblox.com/docs/reference/engine/classes/ClickDetector"}
+            ]
         }
     ]
 }
