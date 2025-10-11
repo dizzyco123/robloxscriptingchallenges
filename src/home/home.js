@@ -194,6 +194,7 @@ function showChallengeDetail(challengeId) {
                 completeBtn.textContent = 'Mark as Complete';
             }
             renderChallenges();
+            updateStats();
         });
     }
 }
@@ -268,7 +269,30 @@ function filterChallenges() {
     }
 }
 
+function updateStats() {
+    const completed = JSON.parse(localStorage.getItem('completedChallenges')) || [];
+
+    const stats = {
+        beginner: 0,
+        novice: 0,
+        advanced: 0,
+        expert: 0
+    };
+    
+    challenges.forEach(challenge => {
+        if (completed.has(challenge.id)) {
+            stats[challenge.difficulty]++;
+        }
+    });
+    
+    document.getElementById('beginnerCount').textContent = stats.beginner;
+    document.getElementById('noviceCount').textContent = stats.novice;
+    document.getElementById('advancedCount').textContent = stats.advanced;
+    document.getElementById('expertCount').textContent = stats.expert;
+}
+
 loadChallenges();
+updateStats();
 
 window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);

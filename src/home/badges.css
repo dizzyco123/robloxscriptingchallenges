@@ -33,3 +33,30 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.6; }
 }
+
+.completion-stat {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+.stat-beginner {
+    color: #00b87a;
+    font-weight: 700;
+}
+
+.stat-novice {
+    color: #d9a000;
+    font-weight: 700;
+}
+
+.stat-advanced {
+    color: #ef476f;
+    font-weight: 700;
+}
+
+.stat-expert {
+    color: #9b59b6;
+    font-weight: 700;
+}
