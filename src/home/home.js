@@ -185,7 +185,7 @@ function showChallengeDetail(challengeId) {
     });
     
     window.scrollTo(0, 0);
-    document.title = `${challenge.name} - ${challenge.difficulty} Challenge | Roblox Scripting Challenges`;
+    document.title = `${challenge.name} - ${challenge.difficulty.charAt(0).toUpperCase() + challenge.difficulty.slice(1)} Scripting Challenge`;
 
     const completeBtn = document.getElementById('markCompleteBtn');
     if (completeBtn) {
