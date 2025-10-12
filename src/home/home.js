@@ -181,9 +181,11 @@ function showChallengeDetail(challengeId) {
         e.preventDefault();
         showChallengeList();
         window.history.pushState({}, '', window.location.pathname);
+        document.title = `Roblox Scripting Challenges`;
     });
     
     window.scrollTo(0, 0);
+    document.title = `${challenge.name} - ${challenge.difficulty} Challenge | Roblox Scripting Challenges`;
 
     const completeBtn = document.getElementById('markCompleteBtn');
     if (completeBtn) {
